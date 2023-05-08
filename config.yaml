@@ -1,0 +1,82 @@
+
+#-----------------------------------------------
+#Config that does not have impact on performance
+#-----------------------------------------------
+
+
+random_seed: 0b011011
+
+#-----------------------------------------------
+#1. Dataset
+#-----------------------------------------------
+
+dataset:
+
+#directory that have every dataset in it.
+  data_dir: /media/youngwon/Neo/NeoChoi/Dataset/SR
+
+  hr_train: "hr/train"  
+  hr_val: "hr/test"
+
+  lr_train: "lr/train"
+  lr_val: "lr/test"
+
+#So for this case, low-resolution validation dataset should be located at "/media/youngwon/Neo/NeoChoi/Dataset/SR/lr/test"
+
+  frame_size: 2048
+  hop_size: 1024
+
+  batch_size: 32
+  num_workers: 16
+ 
+#-----------------------------------------------
+#2. Model
+#-----------------------------------------------
+
+model:
+  kernel_size: 11
+  dropout_rate: 0.2
+
+#-----------------------------------------------
+#3. Loss
+#-----------------------------------------------
+
+loss:
+  # type: "LossRIMAG" #RI-Mag loss
+  # type: "LossTF" #TF loss
+  type: "LossTPCM" #T-PCM loss, main contribution of this paper
+
+  # tf_alpha: 0.85 #active when using TF loss
+  tpcm_beta: 0.6 #active when using T-PCM loss
+
+  window_size: 512
+  hop_size: 256
+
+#-----------------------------------------------
+#4. Optimizer(ADAM)
+#-----------------------------------------------
+optim:
+  initial_lr: 0.0003
+
+  B1: 0.5
+  B2: 0.9
+
+  patience_epoch: 3
+
+
+#-----------------------------------------------
+#Training
+#-----------------------------------------------
+
+train:
+  total_epoch: 100
+
+#Path of output of validation. 
+  output_dir_path: "./output"
+  logger_path: "./logger"
+
+  devices:
+    - 0
+    #- 1... if you are using DDP
+    # -2 
+
