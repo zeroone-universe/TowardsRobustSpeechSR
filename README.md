@@ -32,7 +32,7 @@ This repository also support directory-level inference, where the inference is p
 ```python inference.py --mode "dir" --path_ckpt <path of checkpoint file> --path_in <path of directory that contains input wave files> --path_out <path of directory that output files will be saved>```
 
 ## Note
-- Unfortunately, the performance of my implementation of the model described in the paper is not as satisfactory as expected. If time permits, I will make efforts to improve the model's performance and enhance the implementation. Any contributions or suggestions are highly appreciated.
+- Unfortunately, the performance of my implementation of the model described in the paper is not as satisfactory as expected. If time permits, I will make efforts to improve the model's performance and enhance the implementation if time allows. Any contributions or suggestions are highly appreciated.
 
 ## Citation
 
